@@ -27,17 +27,21 @@
 
 <body>
 
+  <main id="main-content">
+
   <!-- =====================================================
        HERO
        ===================================================== -->
 
-  <main class="hero" id="hero">
+  <section class="hero" id="hero" aria-labelledby="hero-title">
 
     <div class="hero__media" aria-hidden="true">
       <img
         class="hero__figure"
         src="./assets/images/PerfilFotoHeroIMG.png"
         alt=""
+        fetchpriority="high"
+        decoding="async"
       />
 
       <div class="hero__vignette"></div>
@@ -58,7 +62,7 @@
         </span>
       </div>
 
-      <nav class="pill-nav" aria-label="Navegação principal">
+      <nav id="primary-navigation" class="pill-nav" aria-label="Navegação principal">
         <a href="#work">PROJETOS</a>
         <a href="#about">SOBRE</a>
         <a href="#stacks">STACKS</a>
@@ -80,6 +84,7 @@
           type="button"
           aria-label="Abrir menu"
           aria-expanded="false"
+          aria-controls="primary-navigation"
         >
           <i></i>
           <i></i>
@@ -125,7 +130,7 @@
     </div>
 
     <section class="hero__content">
-      <h1 class="hero__title" aria-label="Pedro Pimenta">
+      <h1 class="hero__title" id="hero-title" aria-label="Pedro Pimenta">
         <span>PEDRO</span>
         <span>PIMENTA</span>
       </h1>
@@ -189,7 +194,7 @@
 
     <div class="cursor-glow" aria-hidden="true"></div>
 
-  </main>
+  </section>
 
 
   <!-- =====================================================
@@ -1151,6 +1156,8 @@
       </div>
     </footer>
   </section>
+
+  </main>
 
 
   <!-- Each script owns the interactions of its matching page section. -->
