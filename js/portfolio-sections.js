@@ -82,29 +82,60 @@
     });
   });
 
-  /* Mobile navigation */
+  /* Mobile navigation: keep keyboard focus inside the open overlay. */
   const menuButton = document.querySelector(".menu-btn");
-  const navigation = document.querySelector(".pill-nav");
+  const navigation = document.querySelector("#primary-navigation");
+  const menuLinks = [...(navigation?.querySelectorAll("a") ?? [])];
 
-  const closeMenu = () => {
+  const closeMenu = ({ restoreFocus = false } = {}) => {
+    if (!document.body.classList.contains("is-menu-open")) return;
+
     document.body.classList.remove("is-menu-open");
     menuButton?.setAttribute("aria-expanded", "false");
     menuButton?.setAttribute("aria-label", "Abrir menu");
+
+    if (restoreFocus) menuButton?.focus();
   };
 
   menuButton?.addEventListener("click", () => {
-    const isOpen = document.body.classList.toggle("is-menu-open");
+    if (document.body.classList.contains("is-menu-open")) {
+      closeMenu();
+      return;
+    }
 
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+    document.body.classList.add("is-menu-open");
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "Fechar menu");
+    menuLinks[0]?.focus();
   });
 
-  navigation?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (!document.body.classList.contains("is-menu-open")) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu({ restoreFocus: true });
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    // Links precede the menu button in the DOM/tab order.
+    const focusable = [...menuLinks, menuButton].filter(Boolean);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
 
   window.addEventListener(
