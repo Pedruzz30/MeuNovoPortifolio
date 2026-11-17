@@ -26,7 +26,7 @@ Site estático de portfólio, organizado por responsabilidade para facilitar man
 
 ## Como revisar localmente
 
-O projeto não possui etapa de build. Abra-o com um servidor estático para que todos os recursos sejam carregados com o mesmo comportamento de produção.
+Os arquivos-fonte funcionam sem build para desenvolvimento local; a publicação otimizada possui uma etapa de build descrita abaixo. Abra o projeto com um servidor estático para testar os recursos corretamente.
 
 No VS Code, a configuração do Live Server usa a porta `5501`. Depois de iniciar o servidor, acesse `http://127.0.0.1:5501/`.
 
