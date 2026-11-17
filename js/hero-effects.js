@@ -2,6 +2,7 @@
 const hero = document.querySelector("#hero");
 const glow = document.querySelector(".cursor-glow");
 const portrait = document.querySelector(".hero__figure");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (
   hero &&
@@ -9,18 +10,24 @@ if (
   portrait &&
   window.matchMedia("(pointer: fine)").matches
 ) {
-  hero.addEventListener("pointerenter", () => {
-    glow.style.opacity = "1";
-  });
-
-  hero.addEventListener("pointerleave", () => {
+  const resetPointerEffects = () => {
     glow.style.opacity = "0";
+    portrait.style.transform = "translateX(-50%)";
+  };
 
-    portrait.style.transform =
-      "translateX(-50%) translate3d(0, 0, 0) scale(1)";
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) resetPointerEffects();
   });
+
+  hero.addEventListener("pointerenter", () => {
+    if (!reducedMotion.matches) glow.style.opacity = "1";
+  });
+
+  hero.addEventListener("pointerleave", resetPointerEffects);
 
   hero.addEventListener("pointermove", (event) => {
+    if (reducedMotion.matches) return;
+
     const rect = hero.getBoundingClientRect();
 
     const x = event.clientX - rect.left;
