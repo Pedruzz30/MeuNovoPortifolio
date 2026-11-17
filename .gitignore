@@ -1,0 +1,7 @@
+# Local browser profiles generated during visual QA
+.chrome-qa-profile/
+.chrome-qa-profile-new/
+
+# Editor and operating-system noise
+.DS_Store
+Thumbs.db

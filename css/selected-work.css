@@ -1,0 +1,2131 @@
+/* =========================================================
+   PEDRO PIMENTA — SELECTED WORK
+   selected-work.css
+   ========================================================= */
+
+.work {
+  --work-bg: #081014;
+  --work-text: #e8e3d9;
+  --work-muted: rgba(235, 232, 222, 0.65);
+  --work-faint: rgba(235, 232, 222, 0.22);
+  --work-line: rgba(235, 232, 222, 0.28);
+  --work-soft-line: rgba(235, 232, 222, 0.12);
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 110px 54px 70px;
+
+  overflow: hidden;
+
+  color: var(--work-text);
+  background: #071014;
+
+  font-family: "IBM Plex Mono", monospace;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.work__background {
+  position: absolute;
+  inset: 0;
+
+  z-index: -2;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 52% 8%,
+      rgba(255, 255, 255, 0.025),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 18% 65%,
+      rgba(70, 90, 95, 0.05),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #071014 0%,
+      #081014 40%,
+      #060c0f 100%
+    );
+}
+
+.work__vignette {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 32%,
+      rgba(0, 0, 0, 0.16) 68%,
+      rgba(0, 0, 0, 0.42) 100%
+    );
+}
+
+
+/* =========================================================
+   GRAIN
+   ========================================================= */
+
+.work__grain,
+.work__grain::before {
+  position: absolute;
+
+  inset: -60%;
+
+  content: "";
+
+  opacity: 0.11;
+
+  pointer-events: none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.72'/%3E%3C/svg%3E");
+
+  animation: workNoise 0.4s steps(2) infinite;
+
+  will-change: transform;
+}
+
+.work__grain::before {
+  transform: rotate(90deg);
+}
+
+@keyframes workNoise {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(2%, -1%, 0);
+  }
+
+  50% {
+    transform: translate3d(-1%, 2%, 0);
+  }
+
+  75% {
+    transform: translate3d(1%, 1%, 0);
+  }
+
+  100% {
+    transform: translate3d(-2%, -1%, 0);
+  }
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.work__header {
+  position: relative;
+
+  min-height: 315px;
+
+  display: grid;
+
+  grid-template-columns:
+    100px
+    minmax(400px, 1.2fr)
+    180px
+    minmax(250px, 0.6fr)
+    100px;
+
+  align-items: start;
+
+  gap: 32px;
+}
+
+.work__chapter {
+  display: flex;
+
+  gap: 20px;
+
+  font-size: 10px;
+  line-height: 1.6;
+
+  letter-spacing: 0.17em;
+
+  color: var(--work-muted);
+}
+
+.work__chapter-rule {
+  width: 1px;
+  height: 68px;
+
+  background: var(--work-line);
+}
+
+.work__chapter div {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.work__chapter small {
+  font-size: 8px;
+  color: rgba(235, 232, 222, 0.32);
+}
+
+.work__title {
+  margin: 8px 0 0;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+
+  font-size: clamp(76px, 8vw, 132px);
+  font-weight: 400;
+  line-height: 0.76;
+
+  letter-spacing: -0.075em;
+
+  color: #e9e3d9;
+}
+
+.work__title span:last-child {
+  margin-left: 4px;
+}
+
+.work__orb {
+  justify-self: center;
+
+  margin-top: 5px;
+
+  width: 108px;
+  aspect-ratio: 1;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.05),
+      transparent 65%
+    );
+
+  will-change: transform;
+}
+
+.work__orb span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #efeae1;
+
+  box-shadow:
+    0 0 20px 8px rgba(255, 245, 225, 0.11);
+}
+
+.work__intro {
+  padding-top: 20px;
+
+  font-size: 10px;
+  line-height: 1.75;
+
+  letter-spacing: 0.18em;
+
+  color: var(--work-muted);
+}
+
+.work__intro p {
+  margin: 0;
+}
+
+.work__intro > span {
+  display: block;
+
+  margin-top: 25px;
+
+  width: 32px;
+  height: 1px;
+
+  background: var(--work-line);
+}
+
+.work__disciplines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 18px;
+
+  padding-top: 2px;
+
+  text-align: right;
+
+  font-size: 9px;
+  line-height: 1.6;
+
+  letter-spacing: 0.15em;
+
+  color: var(--work-muted);
+}
+
+.work__disciplines i {
+  width: 1px;
+  height: 25px;
+
+  background: var(--work-line);
+}
+
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.projects {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 130px;
+
+  margin-top: 20px;
+}
+
+.project {
+  position: relative;
+
+  display: grid;
+  align-items: center;
+
+  column-gap: 64px;
+}
+
+.project__info {
+  position: relative;
+  z-index: 2;
+}
+
+.project__index {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 26px;
+
+  font-size: 10px;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(240, 235, 225, 0.87);
+}
+
+.project__index i {
+  width: 55px;
+  height: 1px;
+
+  background: var(--work-line);
+}
+
+.project__title {
+  margin: 0;
+
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+
+  font-size: clamp(39px, 4vw, 67px);
+  font-weight: 400;
+  line-height: 0.91;
+
+  letter-spacing: -0.052em;
+
+  color: #e7e1d6;
+
+  transition: color 0.35s ease;
+}
+
+.project__type {
+  margin: 20px 0 0;
+
+  font-size: 10px;
+  line-height: 1.7;
+
+  letter-spacing: 0.22em;
+
+  color: rgba(239, 234, 225, 0.7);
+}
+
+.project__description {
+  max-width: 390px;
+
+  margin: 22px 0 0;
+
+  font-size: 11px;
+  line-height: 1.8;
+
+  letter-spacing: 0.04em;
+
+  color: rgba(239, 234, 225, 0.54);
+}
+
+.project__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 11px;
+
+  margin-top: 26px;
+
+  font-size: 9px;
+
+  letter-spacing: 0.15em;
+
+  color: rgba(239, 234, 225, 0.65);
+}
+
+.project__meta b {
+  font-weight: 300;
+  opacity: 0.38;
+}
+
+.project__meta i {
+  width: 50px;
+  height: 1px;
+
+  margin-left: 4px;
+
+  background: var(--work-line);
+}
+
+
+/* =========================================================
+   VIEW CASE
+   ========================================================= */
+
+.case-link {
+  width: max-content;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 30px;
+
+  font-size: 9px;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(239, 234, 225, 0.67);
+
+  transition: color 0.3s ease;
+}
+
+.case-link__circle {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.case-link__circle i {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #f2eee5;
+}
+
+.case-link:hover {
+  color: #f0ebe2;
+}
+
+.case-link:hover .case-link__circle {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   VISUAL
+   ========================================================= */
+
+.project__visual {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  overflow: visible;
+
+  perspective: 1200px;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s ease;
+}
+
+.project__image-frame {
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  background: #030709;
+
+  box-shadow:
+    0 45px 90px rgba(0, 0, 0, 0.3);
+}
+
+.project__visual-number {
+  position: absolute;
+
+  z-index: -1;
+
+  right: -25px;
+  bottom: -53px;
+
+  font-family: "Bodoni Moda", serif;
+
+  font-size: clamp(80px, 10vw, 160px);
+  line-height: 1;
+
+  color: rgba(255, 255, 255, 0.025);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LIVE PREVIEW — DESKTOP VIRTUAL VIEWPORT
+   ========================================================= */
+
+.project__iframe-frame {
+  /*
+    Viewport virtual usada por TODOS os previews.
+    1440 x 900 = 16 / 10 — o frame acompanha
+    a mesma proporção para que a viewport
+    caiba inteira, sem corte e sem faixa.
+  */
+  --iframe-viewport-w: 1440;
+  --iframe-viewport-h: 900;
+
+  /*
+    Atualizado pelo selected-work.js
+    (ResizeObserver).
+  */
+  --iframe-scale: 1;
+
+  position: relative;
+
+  /*
+    Nada aqui deve sugerir que é possível
+    clicar ou navegar dentro do preview.
+  */
+  cursor: default;
+
+  -webkit-user-select: none;
+  user-select: none;
+
+  touch-action: pan-y;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+
+  overflow: hidden;
+
+  background: #05090b;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 45px 90px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   IFRAME
+   ========================================================= */
+
+.project__iframe {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  /*
+    O site sempre acha que está sendo aberto
+    em uma tela desktop grande.
+  */
+  width: calc(var(--iframe-viewport-w, 1440) * 1px);
+  height: calc(var(--iframe-viewport-h, 900) * 1px);
+
+  border: 0;
+
+  background: #05090b;
+
+  transform-origin: top left;
+
+  /*
+    Reduz a viewport virtual inteira até
+    caber no card. Valor calculado no JS.
+  */
+  transform: scale(var(--iframe-scale, 1));
+
+  /*
+    O preview é um "live screenshot":
+    o iframe não captura mouse, wheel,
+    touch nem teclado. As animações do
+    próprio site continuam rodando.
+
+    A única navegação para o projeto
+    completo é o botão VIEW CASE.
+  */
+  pointer-events: none;
+
+  /*
+    Reforca o scrolling="no" do HTML caso
+    algum browser ainda calcule scrollbar
+    para o documento embutido.
+  */
+  overflow: hidden;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
+/* =========================================================
+   VISUAL OVERLAY
+   ========================================================= */
+
+.project__iframe-frame::before {
+  position: absolute;
+  inset: 0;
+
+  z-index: 5;
+
+  content: "";
+
+  pointer-events: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 0 0 80px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   LIVE LABEL
+   ========================================================= */
+
+.project__live-label {
+  position: absolute;
+
+  top: 14px;
+  left: 16px;
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 7px 10px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  background:
+    rgba(5, 10, 12, 0.78);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  font-size: 7px;
+
+  letter-spacing: 0.17em;
+
+  color:
+    rgba(240, 235, 225, 0.72);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PROPORÇÃO ÚNICA DOS PREVIEWS
+
+   Os três previews usam exatamente o mesmo
+   sistema: viewport virtual 1440 x 900
+   reduzida por transform: scale().
+
+   Nenhum case sobrescreve o aspect-ratio —
+   qualquer valor diferente de 16 / 10
+   cortaria parte da viewport virtual.
+   ========================================================= */
+
+.project__visual--space .project__iframe-frame,
+.project__visual--tattoo .project__iframe-frame,
+.project__visual--luciano .project__iframe-frame {
+  aspect-ratio: 16 / 10;
+}
+
+
+/* =========================================================
+   CASE 01 — SPACE UNDERGROUND
+   ========================================================= */
+
+.project--space {
+  grid-template-columns:
+    minmax(280px, 0.65fr)
+    minmax(600px, 1.55fr);
+
+  min-height: 485px;
+}
+
+.project__visual--space {
+  transform:
+    translateY(-5px)
+    rotate(-2deg);
+}
+
+
+/* =========================================================
+   CASE 02 — TATTOO SITE
+   ========================================================= */
+
+.project--tattoo {
+  grid-template-columns:
+    minmax(550px, 1.25fr)
+    minmax(330px, 0.72fr);
+
+  min-height: 420px;
+
+  padding-right: 100px;
+}
+
+.project__visual--tattoo {
+  transform: rotate(1.8deg);
+}
+
+.project__aside--tattoo {
+  position: absolute;
+
+  right: 0;
+  top: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  font-size: 8px;
+  line-height: 1.65;
+
+  letter-spacing: 0.17em;
+
+  color: rgba(239, 234, 225, 0.45);
+}
+
+.project__aside-image {
+  width: 62px;
+  height: 82px;
+
+  display: block;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255, 255, 255, 0.28),
+      transparent 13%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.01)
+    );
+
+  opacity: 0.7;
+}
+
+.project__aside--tattoo div {
+  display: flex;
+  gap: 15px;
+}
+
+.project__aside--tattoo i {
+  width: 1px;
+  height: 50px;
+
+  background: var(--work-line);
+}
+
+
+/* =========================================================
+   CASE 03 — LUCIANO
+   ========================================================= */
+
+.project--luciano {
+  grid-template-columns:
+    minmax(300px, 0.7fr)
+    minmax(620px, 1.4fr);
+
+  padding-right: 95px;
+
+  min-height: 470px;
+}
+
+.project__visual--luciano {
+  transform: translateY(8px);
+}
+
+.project__aside--luciano {
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  font-size: 8px;
+  line-height: 1.7;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(239, 234, 225, 0.46);
+}
+
+.project__aside--luciano i {
+  width: 1px;
+  height: 74px;
+
+  background: var(--work-line);
+}
+
+
+/* =========================================================
+   GITHUB — OUTROS PROJETOS
+   ========================================================= */
+
+.project--github {
+  display: block;
+
+  min-height: 0;
+  padding-top: 48px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.github-showcase__head {
+  display: grid;
+  grid-template-columns:
+    minmax(260px, 0.7fr)
+    minmax(420px, 1.3fr);
+
+  align-items: start;
+  gap: 64px;
+}
+
+.github-showcase__head .project__index {
+  margin-bottom: 21px;
+}
+
+.github-showcase__eyebrow {
+  margin: 0;
+
+  font-size: 9px;
+  line-height: 1.75;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(239, 234, 225, 0.45);
+}
+
+.github-showcase__intro .project__title {
+  font-size: clamp(48px, 5.4vw, 82px);
+}
+
+.github-showcase__intro .project__description {
+  max-width: 520px;
+}
+
+.github-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-top: 62px;
+}
+
+.github-card {
+  --github-accent: 178, 86%, 66%;
+
+  position: relative;
+  isolation: isolate;
+
+  min-height: 430px;
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  background:
+    linear-gradient(
+      155deg,
+      hsla(var(--github-accent), 0.11),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.018);
+
+  color: #e7e1d6;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.github-card::before,
+.github-card::after {
+  position: absolute;
+  z-index: -1;
+
+  content: "";
+
+  pointer-events: none;
+}
+
+.github-card::before {
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 36px 36px;
+
+  mask-image: linear-gradient(to bottom, black, transparent 67%);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 67%);
+}
+
+.github-card::after {
+  width: 190px;
+  height: 190px;
+
+  top: 55px;
+  right: -72px;
+
+  border-radius: 50%;
+
+  background: hsla(var(--github-accent), 0.13);
+  filter: blur(44px);
+}
+
+.github-card--management {
+  --github-accent: 35, 91%, 64%;
+}
+
+.github-card--jarvis {
+  --github-accent: 270, 84%, 73%;
+}
+
+.github-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 8px;
+  letter-spacing: 0.18em;
+
+  color: rgba(239, 234, 225, 0.56);
+}
+
+.github-card__top span:last-child {
+  font-family: "Bodoni Moda", serif;
+  font-size: 23px;
+  line-height: 1;
+
+  color: hsla(var(--github-accent), 0.9);
+
+  transition: transform 0.35s ease;
+}
+
+.github-card__signal {
+  position: relative;
+
+  width: 116px;
+  height: 116px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 34px 0 30px;
+
+  border: 1px solid hsla(var(--github-accent), 0.26);
+  border-radius: 50%;
+}
+
+.github-card__signal::before,
+.github-card__signal::after,
+.github-card__signal span {
+  display: block;
+
+  border: 1px solid hsla(var(--github-accent), 0.38);
+  border-radius: 50%;
+
+  content: "";
+}
+
+.github-card__signal::before {
+  width: 78px;
+  height: 78px;
+}
+
+.github-card__signal::after {
+  position: absolute;
+
+  width: 38px;
+  height: 38px;
+
+  background: hsla(var(--github-accent), 0.12);
+  box-shadow: 0 0 35px hsla(var(--github-accent), 0.22);
+}
+
+.github-card__signal span {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border: 0;
+
+  background: hsla(var(--github-accent), 0.95);
+  box-shadow: 0 0 17px hsla(var(--github-accent), 0.68);
+}
+
+.github-card__body {
+  margin-top: auto;
+}
+
+.github-card__body > p:first-child {
+  margin: 0 0 12px;
+
+  font-size: 8px;
+  letter-spacing: 0.18em;
+
+  color: hsla(var(--github-accent), 0.76);
+}
+
+.github-card__body h4 {
+  margin: 0;
+
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: clamp(30px, 3vw, 47px);
+  font-weight: 400;
+  line-height: 0.94;
+
+  letter-spacing: -0.045em;
+}
+
+.github-card__body > p:last-child {
+  min-height: 67px;
+  margin: 18px 0 0;
+
+  font-size: 9px;
+  line-height: 1.75;
+  letter-spacing: 0.035em;
+
+  color: rgba(239, 234, 225, 0.51);
+}
+
+.github-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin: 22px 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.github-card__stack li {
+  padding: 6px 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  font-size: 7px;
+  letter-spacing: 0.14em;
+
+  color: rgba(239, 234, 225, 0.62);
+}
+
+.github-card:focus-visible {
+  outline: 1px solid hsla(var(--github-accent), 0.9);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .project__visual:hover .project__iframe-frame {
+    border-color: rgba(255, 255, 255, 0.26);
+
+    box-shadow:
+      0 50px 100px rgba(0, 0, 0, 0.36);
+  }
+
+  .project__visual--space:hover {
+    transform:
+      translateY(-8px)
+      rotate(-1.25deg);
+  }
+
+  .project__visual--tattoo:hover {
+    transform:
+      translateY(-7px)
+      rotate(1deg);
+  }
+
+  .project__visual--luciano:hover {
+    transform: translateY(1px);
+  }
+
+  .github-card:hover {
+    transform: translateY(-8px);
+
+    border-color: hsla(var(--github-accent), 0.46);
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+
+  .github-card:hover .github-card__top span:last-child {
+    transform: translate(3px, -3px);
+  }
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.work__footer {
+  position: relative;
+
+  margin-top: 130px;
+
+  padding-top: 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 35px;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(239, 234, 225, 0.43);
+}
+
+.work__footer-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.work__footer-logo {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 27px;
+
+  letter-spacing: -0.08em;
+
+  color: #e6e0d6;
+}
+
+.work__footer-brand i {
+  width: 25px;
+  height: 1px;
+
+  background: var(--work-line);
+}
+
+.work__footer-center {
+  display: flex;
+  align-items: center;
+
+  gap: 23px;
+}
+
+.work__footer-center i {
+  width: 42px;
+  height: 1px;
+
+  background: var(--work-line);
+}
+
+.work__footer-index {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+
+  gap: 19px;
+
+  line-height: 1.55;
+}
+
+.work__footer-index i {
+  width: 56px;
+  height: 1px;
+
+  background: var(--work-line);
+}
+
+
+/* =========================================================
+   NOTEBOOK
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+  .work {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .work__header {
+    grid-template-columns:
+      80px
+      minmax(350px, 1fr)
+      140px
+      minmax(210px, 0.6fr)
+      70px;
+  }
+
+  .work__title {
+    font-size: clamp(70px, 8vw, 110px);
+  }
+
+  .project--space {
+    grid-template-columns:
+      minmax(260px, 0.6fr)
+      minmax(500px, 1.4fr);
+  }
+
+  .project--tattoo {
+    grid-template-columns:
+      minmax(450px, 1.2fr)
+      minmax(300px, 0.7fr);
+  }
+
+  .project--luciano {
+    grid-template-columns:
+      minmax(290px, 0.65fr)
+      minmax(500px, 1.35fr);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .work {
+    padding:
+      90px
+      28px
+      55px;
+  }
+
+  .work__header {
+    min-height: 270px;
+
+    grid-template-columns:
+      70px
+      1fr
+      120px;
+
+    grid-template-rows:
+      auto
+      auto;
+  }
+
+  .work__chapter {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .work__title {
+    grid-column: 2;
+    grid-row: 1;
+
+    font-size: clamp(66px, 10vw, 100px);
+  }
+
+  .work__orb {
+    grid-column: 3;
+    grid-row: 1;
+
+    width: 90px;
+  }
+
+  .work__intro {
+    grid-column: 2;
+    grid-row: 2;
+
+    padding-top: 10px;
+  }
+
+  .work__disciplines {
+    display: none;
+  }
+
+  .projects {
+    gap: 105px;
+  }
+
+  .project--space,
+  .project--tattoo,
+  .project--luciano {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    padding-right: 0;
+  }
+
+  .project--space .project__visual {
+    grid-row: 2;
+  }
+
+  .project--tattoo .project__visual {
+    grid-row: 1;
+  }
+
+  .project--tattoo .project__info {
+    grid-row: 2;
+  }
+
+  .project--luciano .project__visual {
+    grid-row: 2;
+  }
+
+  .project__description {
+    max-width: 520px;
+  }
+
+  .project__visual--space,
+  .project__visual--tattoo,
+  .project__visual--luciano {
+    transform: none;
+  }
+
+  .project__aside {
+    display: none;
+  }
+
+  .github-showcase__head {
+    grid-template-columns:
+      minmax(220px, 0.65fr)
+      minmax(380px, 1.35fr);
+
+    gap: 42px;
+  }
+
+  .github-showcase__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .github-card--jarvis {
+    grid-column: 1 / -1;
+
+    min-height: 370px;
+  }
+
+  .work__footer {
+    grid-template-columns:
+      1fr
+      auto;
+  }
+
+  .work__footer-center {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .work {
+    padding:
+      75px
+      20px
+      42px;
+  }
+
+  .work__header {
+    min-height: 340px;
+
+    display: block;
+  }
+
+  .work__chapter {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+  }
+
+  .work__chapter-rule {
+    height: 64px;
+  }
+
+  .work__title {
+    padding-top: 100px;
+
+    font-size: clamp(67px, 20vw, 105px);
+    line-height: 0.78;
+  }
+
+  .work__orb {
+    position: absolute;
+
+    top: 5px;
+    right: 0;
+
+    width: 85px;
+  }
+
+  .work__intro {
+    margin:
+      30px
+      0
+      0
+      auto;
+
+    width: 57%;
+
+    padding: 0;
+
+    font-size: 8px;
+    line-height: 1.8;
+
+    letter-spacing: 0.14em;
+  }
+
+  .work__intro > span {
+    margin-top: 16px;
+  }
+
+  .projects {
+    margin-top: 55px;
+
+    gap: 100px;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 32px;
+
+    min-height: 0;
+  }
+
+  .project--github {
+    display: block;
+
+    padding-top: 36px;
+  }
+
+  .github-showcase__head {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .github-showcase__intro .project__description {
+    max-width: 100%;
+  }
+
+  .github-showcase__grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-top: 44px;
+  }
+
+  .github-card,
+  .github-card--jarvis {
+    grid-column: auto;
+
+    min-height: 385px;
+    padding: 22px;
+  }
+
+  .github-card__signal {
+    width: 98px;
+    height: 98px;
+
+    margin: 29px 0 25px;
+  }
+
+  .github-card__signal::before {
+    width: 66px;
+    height: 66px;
+  }
+
+  .github-card__body h4 {
+    font-size: clamp(34px, 11vw, 48px);
+  }
+
+  .github-card__body > p:last-child {
+    min-height: 0;
+  }
+
+  .project--space .project__info {
+    order: 1;
+  }
+
+  .project--space .project__visual {
+    order: 2;
+  }
+
+  .project--tattoo .project__visual {
+    order: 1;
+  }
+
+  .project--tattoo .project__info {
+    order: 2;
+  }
+
+  .project--luciano .project__info {
+    order: 1;
+  }
+
+  .project--luciano .project__visual {
+    order: 2;
+  }
+
+  .project__index {
+    margin-bottom: 20px;
+
+    font-size: 9px;
+  }
+
+  .project__index i {
+    width: 45px;
+  }
+
+  .project__title {
+    font-size: clamp(42px, 12vw, 65px);
+    line-height: 0.91;
+  }
+
+  .project__type {
+    margin-top: 16px;
+
+    font-size: 8px;
+    line-height: 1.8;
+  }
+
+  .project__description {
+    max-width: 90%;
+
+    margin-top: 18px;
+
+    font-size: 9px;
+    line-height: 1.8;
+  }
+
+  .project__meta {
+    margin-top: 20px;
+
+    gap: 8px;
+
+    font-size: 7px;
+    line-height: 1.7;
+  }
+
+  .project__meta i {
+    width: 28px;
+  }
+
+  .case-link {
+    margin-top: 23px;
+
+    font-size: 8px;
+  }
+
+  .case-link__circle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .project__image-frame {
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  /*
+    No mobile a viewport virtual continua
+    sendo 1440 x 900 — apenas o scale diminui.
+    Por isso a proporção segue 16 / 10.
+  */
+  .project__visual--space .project__iframe-frame,
+  .project__visual--tattoo .project__iframe-frame,
+  .project__visual--luciano .project__iframe-frame {
+    aspect-ratio: 16 / 10;
+  }
+
+  .project__visual--space {
+    transform: rotate(-1deg);
+  }
+
+  .project__visual--tattoo {
+    transform: rotate(1deg);
+  }
+
+  .project__visual--luciano {
+    transform: none;
+  }
+
+  .project__visual-number {
+    display: none;
+  }
+
+  .project__live-label {
+    top: 9px;
+    left: 10px;
+
+    padding: 6px 8px;
+
+    font-size: 6px;
+  }
+
+  .work__footer {
+    margin-top: 95px;
+
+    padding-top: 25px;
+
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 15px;
+
+    font-size: 7px;
+  }
+
+  .work__footer-logo {
+    font-size: 24px;
+  }
+
+  .work__footer-brand > span:last-child {
+    display: none;
+  }
+
+  .work__footer-brand i {
+    width: 22px;
+  }
+
+  .work__footer-index {
+    gap: 10px;
+  }
+
+  .work__footer-index i {
+    width: 28px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .work {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .work__title {
+    font-size: clamp(46px, 13vw, 70px);
+  }
+
+  .work__intro {
+    width: 64%;
+
+    font-size: 7px;
+  }
+
+  .project__title {
+    font-size: clamp(39px, 11vw, 55px);
+  }
+
+  .project__description {
+    max-width: 100%;
+  }
+
+  .github-card {
+    min-height: 370px;
+    padding: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   JS MOTION — HEADER
+   ========================================================= */
+
+.js .work--js .work__chapter,
+.js .work--js .work__title,
+.js .work--js .work__orb,
+.js .work--js .work__intro,
+.js .work--js .work__disciplines {
+  opacity: 0;
+}
+
+.js .work--js .work__chapter {
+  transform: translate3d(0, 18px, 0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .work--js .work__title {
+  transform:
+    translate3d(
+      0,
+      calc(42px + var(--work-title-shift, 0px)),
+      0
+    );
+
+  transition:
+    opacity 1.15s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .work--js .work__orb {
+  transform: scale(0.82);
+
+  transition:
+    opacity 1s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .work--js .work__intro {
+  transform: translate3d(0, 24px, 0);
+
+  transition:
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: 0.12s;
+}
+
+.js .work--js .work__disciplines {
+  transform: translate3d(0, 18px, 0);
+
+  transition:
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: 0.18s;
+}
+
+.js
+.work--js
+.work__header.is-visible
+.work__chapter,
+
+.js
+.work--js
+.work__header.is-visible
+.work__intro,
+
+.js
+.work--js
+.work__header.is-visible
+.work__disciplines {
+  opacity: 1;
+
+  transform: translate3d(0, 0, 0);
+}
+
+.js
+.work--js
+.work__header.is-visible
+.work__title {
+  opacity: 1;
+
+  transform:
+    translate3d(
+      0,
+      var(--work-title-shift, 0px),
+      0
+    );
+}
+
+.js
+.work--js
+.work__header.is-visible
+.work__orb {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   JS MOTION — PROJECTS
+   ========================================================= */
+
+.js .work--js .project .project__info {
+  opacity: 0;
+
+  transform: translate3d(0, 34px, 0);
+
+  transition:
+    opacity 0.9s ease,
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .work--js .project .project__visual {
+  opacity: 0;
+
+  transition:
+    opacity 1s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .work--js .project--space .project__visual {
+  transform:
+    translate3d(70px, 24px, 0)
+    rotate(-3deg);
+}
+
+.js .work--js .project--tattoo .project__visual {
+  transform:
+    translate3d(-70px, 24px, 0)
+    rotate(3deg);
+}
+
+.js .work--js .project--luciano .project__visual {
+  transform:
+    translate3d(70px, 24px, 0);
+}
+
+.js .work--js .project--github .github-card {
+  opacity: 0;
+
+  transform: translate3d(0, 28px, 0);
+}
+
+.js.has-deep-link .work--js .project--github .github-card {
+  opacity: 1;
+
+  transform: none;
+}
+
+.js .work--js .project.is-visible .project__info {
+  opacity: 1;
+
+  transform: translate3d(0, 0, 0);
+}
+
+.js
+.work--js
+.project--space.is-visible
+.project__visual {
+  opacity: 1;
+
+  transform:
+    translateY(-5px)
+    rotate(-2deg);
+}
+
+.js
+.work--js
+.project--tattoo.is-visible
+.project__visual {
+  opacity: 1;
+
+  transform: rotate(1.8deg);
+}
+
+.js
+.work--js
+.project--luciano.is-visible
+.project__visual {
+  opacity: 1;
+
+  transform: translateY(8px);
+}
+
+.js .work--js .project--github.is-visible .github-card {
+  opacity: 1;
+
+  transform: translate3d(0, 0, 0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.js .work--js .project--github.is-visible .github-card:nth-child(1) {
+  transition-delay: 0.16s;
+}
+
+.js .work--js .project--github.is-visible .github-card:nth-child(2) {
+  transition-delay: 0.26s;
+}
+
+.js .work--js .project--github.is-visible .github-card:nth-child(3) {
+  transition-delay: 0.36s;
+}
+
+
+/* =========================================================
+   PROJECT CONTENT STAGGER
+   ========================================================= */
+
+.js
+.work--js
+.project.is-visible
+.project__index {
+  animation:
+    projectDetailReveal
+    0.8s
+    0.15s
+    both;
+}
+
+.js
+.work--js
+.project.is-visible
+.project__title {
+  animation:
+    projectDetailReveal
+    0.9s
+    0.20s
+    both;
+}
+
+.js
+.work--js
+.project.is-visible
+.project__type {
+  animation:
+    projectDetailReveal
+    0.85s
+    0.28s
+    both;
+}
+
+.js
+.work--js
+.project.is-visible
+.project__description {
+  animation:
+    projectDetailReveal
+    0.9s
+    0.34s
+    both;
+}
+
+.js
+.work--js
+.project.is-visible
+.project__meta {
+  animation:
+    projectDetailReveal
+    0.9s
+    0.40s
+    both;
+}
+
+.js
+.work--js
+.project.is-visible
+.case-link {
+  animation:
+    projectDetailReveal
+    0.9s
+    0.46s
+    both;
+}
+
+@keyframes projectDetailReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        14px,
+        0
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+}
+
+.project.is-hovered .project__title {
+  color: #f1ece3;
+}
+
+
+/* =========================================================
+   MOBILE JS MOTION
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .js
+  .work--js
+  .project--space
+  .project__visual,
+
+  .js
+  .work--js
+  .project--tattoo
+  .project__visual,
+
+  .js
+  .work--js
+  .project--luciano
+  .project__visual {
+    transform: translate3d(0, 30px, 0);
+  }
+
+  .js
+  .work--js
+  .project--space.is-visible
+  .project__visual {
+    transform: rotate(-1deg);
+  }
+
+  .js
+  .work--js
+  .project--tattoo.is-visible
+  .project__visual {
+    transform: rotate(1deg);
+  }
+
+  .js
+  .work--js
+  .project--luciano.is-visible
+  .project__visual {
+    transform: none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .work *,
+  .work *::before,
+  .work *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .work--js *,
+  .work--js *::before,
+  .work--js *::after {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+}

@@ -1,0 +1,1301 @@
+/* =========================================================
+   PEDRO PIMENTA — FOUNDATION / PORTFOLIO HERO
+   Global tokens, reset, navigation and hero styles.
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+  --bg: #081014;
+
+  --text: #e8e3d9;
+  --muted: rgba(235, 232, 222, 0.68);
+  --faint: rgba(235, 232, 222, 0.22);
+  --line: rgba(235, 232, 222, 0.38);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #060b0e;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.has-deep-link {
+  scroll-behavior: auto;
+}
+
+body {
+  color: var(--text);
+  font-family: "IBM Plex Mono", monospace;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 720px;
+
+  overflow: hidden;
+
+  background: #060b0e;
+}
+
+
+/* =========================================================
+   MEDIA / BACKGROUND
+   ========================================================= */
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  background-image: url("../assets/images/FundoHeroIMG.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+
+/* =========================================================
+   FIGURA / FOTO RECORTADA
+   ========================================================= */
+
+.hero__figure {
+  position: absolute;
+
+  z-index: 1;
+
+  /*
+    Figura levemente deslocada para a direita.
+    O JS precisa manter o translateX(-50%).
+  */
+  left: 54%;
+  bottom: -10%;
+
+  height: 95%;
+  width: auto;
+  max-width: none;
+
+  object-fit: contain;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+  user-select: none;
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   VIGNETTE
+   ========================================================= */
+
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 9, 13, 0.95) 0%,
+      rgba(2, 9, 13, 0.45) 22%,
+      transparent 48%,
+      rgba(2, 7, 10, 0.1) 70%,
+      rgba(2, 7, 10, 0.8) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 8, 10, 0.52) 0%,
+      transparent 28%,
+      transparent 64%,
+      rgba(3, 8, 10, 0.82) 100%
+    ),
+    radial-gradient(
+      circle at 50% 42%,
+      transparent 20%,
+      rgba(0, 0, 0, 0.16) 55%,
+      rgba(0, 0, 0, 0.58) 100%
+    );
+}
+
+
+/* =========================================================
+   FILM GRAIN
+   ========================================================= */
+
+.hero__grain,
+.hero__grain::before {
+  position: absolute;
+
+  inset: -60%;
+
+  z-index: 3;
+
+  content: "";
+
+  pointer-events: none;
+
+  opacity: 0.15;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+
+  animation: noise 0.28s steps(2) infinite;
+
+  will-change: transform;
+}
+
+.hero__grain::before {
+  transform: rotate(90deg);
+}
+
+@keyframes noise {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(2%, -1%, 0);
+  }
+
+  50% {
+    transform: translate3d(-1%, 2%, 0);
+  }
+
+  75% {
+    transform: translate3d(1%, 1%, 0);
+  }
+
+  100% {
+    transform: translate3d(-2%, -1%, 0);
+  }
+}
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.topbar {
+  position: absolute;
+
+  top: 28px;
+  left: 56px;
+  right: 56px;
+
+  z-index: 10;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 24px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand-block,
+.location-block {
+  display: flex;
+  align-items: center;
+}
+
+.brand-block {
+  gap: 24px;
+}
+
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 35px;
+  line-height: 1;
+
+  letter-spacing: -0.1em;
+}
+
+.brand-line {
+  width: 34px;
+  height: 1px;
+
+  background: var(--line);
+}
+
+.eyebrow,
+.location-block {
+  font-size: 11px;
+  line-height: 1.55;
+
+  letter-spacing: 0.26em;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.pill-nav {
+  display: grid;
+
+  grid-auto-flow: column;
+
+  gap: 50px;
+
+  padding: 18px 46px;
+
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pill-nav a {
+  position: relative;
+
+  font-size: 12px;
+
+  letter-spacing: 0.22em;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pill-nav a:hover {
+  opacity: 0.55;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.location-block {
+  justify-content: flex-end;
+
+  gap: 20px;
+
+  text-align: left;
+}
+
+.location-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #f2eee4;
+
+  box-shadow:
+    0 0 16px rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================================
+   MENU BUTTON
+   ========================================================= */
+
+.menu-btn {
+  margin-left: 72px;
+
+  width: 42px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.menu-btn i {
+  display: block;
+
+  height: 1px;
+
+  margin: 0 0 10px auto;
+
+  background: var(--muted);
+
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.menu-btn i:first-child {
+  width: 26px;
+}
+
+.menu-btn i:last-child {
+  width: 40px;
+}
+
+.menu-btn:hover i:first-child {
+  width: 40px;
+}
+
+.menu-btn:hover i:last-child {
+  width: 26px;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero__content {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 4;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 160px;
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero__title {
+  width: calc(100% - 145px);
+
+  margin: 0;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+
+  font-size: clamp(92px, 10.2vw, 182px);
+
+  font-weight: 400;
+
+  line-height: 0.82;
+
+  letter-spacing: -0.075em;
+
+  color: #e7e1d6;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.hero__title span:first-child {
+  transform: translateX(-3px);
+}
+
+.hero__title span:last-child {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   ROLE
+   ========================================================= */
+
+.hero__role {
+  margin: 31px 0 0;
+
+  font-size: clamp(10px, 1.05vw, 16px);
+
+  line-height: 1.5;
+
+  letter-spacing: 0.33em;
+
+  color: rgba(242, 238, 229, 0.82);
+}
+
+
+/* =========================================================
+   TAGLINE
+   ========================================================= */
+
+.hero__tagline {
+  margin: 27px 0 0;
+
+  font-size: clamp(9px, 0.82vw, 13px);
+
+  line-height: 1.6;
+
+  letter-spacing: 0.22em;
+
+  color: rgba(242, 238, 229, 0.77);
+}
+
+
+/* =========================================================
+   MICRO TEXT
+   ========================================================= */
+
+.micro {
+  position: absolute;
+
+  z-index: 5;
+
+  display: flex;
+
+  gap: 27px;
+
+  color: rgba(232, 228, 218, 0.67);
+
+  font-size: 11px;
+
+  line-height: 1.65;
+
+  letter-spacing: 0.16em;
+}
+
+.micro p {
+  margin: 0;
+}
+
+.micro small {
+  display: block;
+
+  margin-top: 20px;
+
+  font-size: 9px;
+
+  color: rgba(232, 228, 218, 0.33);
+}
+
+.micro-rule {
+  width: 1px;
+  height: 104px;
+
+  background: rgba(232, 228, 218, 0.32);
+}
+
+.micro-rule--short {
+  height: 27px;
+
+  margin-top: 92px;
+}
+
+.micro--left {
+  top: 185px;
+  left: 57px;
+}
+
+.micro--right {
+  top: 188px;
+  right: 58px;
+
+  text-align: right;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   AMBIENT ORB
+   ========================================================= */
+
+.ambient-orb {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 24.1%;
+  top: 19.2%;
+
+  width: 170px;
+
+  aspect-ratio: 1;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08),
+      transparent 64%
+    );
+
+  pointer-events: none;
+}
+
+.ambient-orb span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #f7f1e8;
+
+  box-shadow:
+    0 0 28px 10px rgba(255, 245, 225, 0.20);
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+   ========================================================= */
+
+.bottom-left {
+  position: absolute;
+
+  left: 57px;
+  bottom: 60px;
+
+  z-index: 5;
+
+  display: grid;
+
+  grid-template-columns:
+    1px
+    132px
+    1fr;
+
+  grid-template-rows:
+    auto
+    auto;
+
+  align-items: center;
+
+  gap: 0 18px;
+}
+
+.bottom-rule {
+  grid-row: 1 / 3;
+
+  width: 1px;
+  height: 122px;
+
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.thumb-wrap {
+  width: 132px;
+  height: 122px;
+
+  overflow: hidden;
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    grayscale(1)
+    brightness(0.64)
+    contrast(1.1);
+}
+
+.bottom-left p {
+  margin: 0;
+
+  align-self: start;
+
+  padding-top: 26px;
+
+  font-size: 10px;
+
+  line-height: 1.85;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(237, 232, 223, 0.55);
+}
+
+.small-line {
+  grid-column: 3;
+
+  width: 87px;
+  height: 1px;
+
+  align-self: end;
+
+  margin-bottom: 13px;
+
+  background: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   SCROLL CUE
+   ========================================================= */
+
+.scroll-cue {
+  position: absolute;
+
+  left: 50%;
+  bottom: 56px;
+
+  z-index: 6;
+
+  transform: translateX(-50%);
+
+  display: grid;
+
+  justify-items: center;
+
+  gap: 22px;
+
+  font-size: 9px;
+
+  letter-spacing: 0.22em;
+
+  color: rgba(239, 234, 225, 0.50);
+}
+
+.scroll-circle {
+  width: 56px;
+  height: 56px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  border-radius: 50%;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.scroll-circle b {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #f3eee3;
+
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+.scroll-cue:hover .scroll-circle {
+  transform: scale(1.09);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border-color: rgba(255, 255, 255, 0.50);
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT
+   ========================================================= */
+
+.bottom-right {
+  position: absolute;
+
+  right: 58px;
+  bottom: 67px;
+
+  z-index: 5;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    96px
+    auto;
+
+  align-items: center;
+
+  gap: 24px;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+
+  letter-spacing: 0.14em;
+
+  color: rgba(239, 234, 225, 0.69);
+}
+
+.bottom-right i {
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   CURSOR GLOW
+   ========================================================= */
+
+.cursor-glow {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 240px;
+  height: 240px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 244, 218, 0.09) 0%,
+      rgba(255, 255, 255, 0.025) 34%,
+      transparent 70%
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.035);
+
+  transition:
+    opacity 0.25s ease;
+
+  will-change:
+    left,
+    top,
+    opacity;
+}
+
+
+/* =========================================================
+   TABLET / NOTEBOOK
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .topbar {
+    left: 28px;
+    right: 28px;
+  }
+
+  .eyebrow,
+  .location-block > span:not(.location-dot) {
+    display: none;
+  }
+
+  .brand-line {
+    display: none;
+  }
+
+  .menu-btn {
+    margin-left: 18px;
+  }
+
+  .pill-nav {
+    gap: 26px;
+
+    padding: 15px 28px;
+  }
+
+  .hero__title {
+    width: calc(100% - 60px);
+
+    font-size:
+      clamp(72px, 13vw, 138px);
+  }
+
+  .micro--right {
+    right: 28px;
+  }
+
+  .micro--left {
+    left: 28px;
+  }
+
+  .bottom-left {
+    left: 28px;
+  }
+
+  .bottom-right {
+    right: 28px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .hero {
+    min-height: 690px;
+  }
+
+
+  /* -------------------------
+     TOPBAR
+     ------------------------- */
+
+  .topbar {
+    top: 20px;
+    left: 28px;
+    right: 28px;
+
+    grid-template-columns:
+      1fr
+      auto;
+  }
+
+  .pill-nav {
+    display: none;
+  }
+
+  .location-block {
+    grid-column: 2;
+  }
+
+  .location-dot {
+    display: none;
+  }
+
+  .brand {
+    font-size: 29px;
+  }
+
+  .menu-btn {
+    margin: 0;
+  }
+
+
+  /* -------------------------
+     FOTO MOBILE
+     ------------------------- */
+
+  .hero__figure {
+    /*
+      Continua usando a mesma classe do HTML.
+      Não existe mais .hero__portrait.
+    */
+
+    left: 56%;
+    bottom: -2%;
+
+    height: 96%;
+    width: auto;
+
+    max-width: none;
+
+    transform: translateX(-50%);
+
+    object-fit: contain;
+  }
+
+
+  /* -------------------------
+     VIGNETTE MOBILE
+     ------------------------- */
+
+  .hero__vignette {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 8, 10, 0.42) 0%,
+        rgba(3, 8, 10, 0.05) 25%,
+        rgba(3, 8, 10, 0.03) 56%,
+        rgba(3, 8, 10, 0.78) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(2, 9, 13, 0.40) 0%,
+        transparent 36%,
+        transparent 76%,
+        rgba(2, 7, 10, 0.25) 100%
+      );
+  }
+
+
+  /* -------------------------
+     GRAIN MOBILE
+     ------------------------- */
+
+  .hero__grain,
+  .hero__grain::before {
+    opacity: 0.11;
+
+    animation-duration: 0.45s;
+  }
+
+
+  /* -------------------------
+     MICRO
+     ------------------------- */
+
+  .micro--left {
+    top: 120px;
+    left: 28px;
+  }
+
+  .micro--right {
+    display: none;
+  }
+
+  .micro {
+    font-size: 10px;
+
+    line-height: 1.7;
+  }
+
+  .micro-rule {
+    height: 104px;
+  }
+
+
+  /* -------------------------
+     ORB
+     ------------------------- */
+
+  .ambient-orb {
+    width: 110px;
+
+    left: auto;
+    right: 14%;
+
+    top: 22%;
+  }
+
+
+  /* -------------------------
+     HERO CONTENT
+     ------------------------- */
+
+  .hero__content {
+    padding:
+      110px
+      20px
+      0;
+
+    justify-content: center;
+  }
+
+
+  /* -------------------------
+     TITLE MOBILE
+     ------------------------- */
+
+  .hero__title {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0;
+
+    font-size:
+      clamp(72px, 23vw, 120px);
+
+    line-height: 0.84;
+
+    letter-spacing: -0.075em;
+  }
+
+  .hero__title span:first-child {
+    transform: none;
+  }
+
+  .hero__title span:last-child {
+    align-self: flex-end;
+
+    transform: none;
+  }
+
+
+  /* -------------------------
+     ROLE MOBILE
+     ------------------------- */
+
+  .hero__role {
+    max-width: 100%;
+
+    margin-top: 24px;
+
+    font-size: 9px;
+
+    line-height: 1.9;
+
+    letter-spacing: 0.20em;
+  }
+
+
+  /* -------------------------
+     TAGLINE MOBILE
+     ------------------------- */
+
+  .hero__tagline {
+    margin-top: 18px;
+
+    font-size: 8px;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.16em;
+  }
+
+
+  /* -------------------------
+     BOTTOM
+     ------------------------- */
+
+  .bottom-left {
+    display: none;
+  }
+
+  .bottom-right {
+    right: 20px;
+    bottom: 28px;
+
+    grid-template-columns:
+      auto
+      48px
+      auto;
+
+    gap: 12px;
+
+    font-size: 8px;
+  }
+
+
+  /* -------------------------
+     SCROLL MOBILE
+     ------------------------- */
+
+  .scroll-cue {
+    left: 28px;
+    bottom: 30px;
+
+    transform: none;
+
+    justify-items: start;
+
+    gap: 10px;
+  }
+
+  .scroll-circle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .scroll-circle b {
+    width: 5px;
+    height: 5px;
+  }
+
+
+  /* -------------------------
+     CURSOR GLOW
+     ------------------------- */
+
+  .cursor-glow {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE PEQUENO
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .hero {
+    min-height: 680px;
+  }
+
+  .topbar {
+    left: 24px;
+    right: 24px;
+  }
+
+  .micro--left {
+    left: 28px;
+  }
+
+  .hero__figure {
+    left: 57%;
+
+    height: 97%;
+  }
+
+  .hero__content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero__title {
+    font-size:
+      clamp(68px, 22vw, 98px);
+  }
+
+  .hero__role {
+    font-size: 8px;
+
+    letter-spacing: 0.17em;
+  }
+
+  .hero__tagline {
+    max-width: 330px;
+
+    font-size: 7.5px;
+  }
+
+  .bottom-right {
+    right: 18px;
+
+    gap: 9px;
+
+    grid-template-columns:
+      auto
+      35px
+      auto;
+
+    font-size: 7px;
+  }
+
+  .scroll-cue {
+    left: 28px;
+  }
+}
+
+
+/* =========================================================
+   TELAS MUITO BAIXAS
+   ========================================================= */
+
+@media (max-height: 760px) and (min-width: 761px) {
+
+  .micro--left,
+  .micro--right {
+    top: 145px;
+  }
+
+  .hero__content {
+    padding-top: 120px;
+  }
+
+  .bottom-left {
+    bottom: 28px;
+  }
+
+  .bottom-right {
+    bottom: 38px;
+  }
+
+  .scroll-cue {
+    bottom: 32px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+
+    transition: none !important;
+
+    scroll-behavior: auto !important;
+  }
+}
