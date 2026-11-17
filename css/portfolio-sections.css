@@ -245,6 +245,25 @@
   letter-spacing: -0.02em;
 }
 
+.about__copy .about__personal {
+  margin-top: 18px;
+}
+
+.about__personal a {
+  color: rgba(235, 232, 222, 0.96);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.about__personal a:hover {
+  color: #fff;
+}
+
+.about__personal a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 .text-arrow-link {
   width: max-content;
   margin-top: 36px;
