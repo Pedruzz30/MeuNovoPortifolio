@@ -2128,4 +2128,9 @@
     transform: none !important;
   }
 
+  /* The iframe scale is layout, not an animation. Keep it in reduced-motion mode. */
+  .work--js .project__iframe {
+    transform: scale(var(--iframe-scale, 1)) !important;
+  }
+
 }
