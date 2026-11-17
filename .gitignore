@@ -5,3 +5,8 @@
 # Editor and operating-system noise
 .DS_Store
 Thumbs.db
+
+# Generated production site and Python cache
+dist/
+__pycache__/
+*.pyc
