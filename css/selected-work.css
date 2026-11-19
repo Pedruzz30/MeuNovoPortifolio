@@ -847,7 +847,7 @@
   display: block;
 
   min-height: 0;
-  padding-top: 48px;
+  padding-top: 34px;
 
   border-top: 1px solid rgba(255, 255, 255, 0.11);
 }
@@ -855,15 +855,15 @@
 .github-showcase__head {
   display: grid;
   grid-template-columns:
-    minmax(260px, 0.7fr)
-    minmax(420px, 1.3fr);
+    minmax(220px, 0.7fr)
+    minmax(0, 1.3fr);
 
   align-items: start;
-  gap: 64px;
+  gap: 32px;
 }
 
 .github-showcase__head .project__index {
-  margin-bottom: 21px;
+  margin-bottom: 12px;
 }
 
 .github-showcase__eyebrow {
@@ -878,7 +878,8 @@
 }
 
 .github-showcase__intro .project__title {
-  font-size: clamp(48px, 5.4vw, 82px);
+  font-size: clamp(38px, 3.4vw, 56px);
+  line-height: 1;
 }
 
 .github-showcase__intro .project__description {
@@ -889,9 +890,9 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  gap: 18px;
+  gap: 14px;
 
-  margin-top: 62px;
+  margin-top: 30px;
 }
 
 .github-card {
@@ -900,8 +901,8 @@
   position: relative;
   isolation: isolate;
 
-  min-height: 430px;
-  padding: 25px;
+  min-height: 310px;
+  padding: 22px;
 
   display: flex;
   flex-direction: column;
@@ -1001,13 +1002,13 @@
 .github-card__signal {
   position: relative;
 
-  width: 116px;
-  height: 116px;
+  width: 52px;
+  height: 52px;
 
   display: grid;
   place-items: center;
 
-  margin: 34px 0 30px;
+  margin: 14px 0 16px;
 
   border: 1px solid hsla(var(--github-accent), 0.26);
   border-radius: 50%;
@@ -1025,15 +1026,15 @@
 }
 
 .github-card__signal::before {
-  width: 78px;
-  height: 78px;
+  width: 34px;
+  height: 34px;
 }
 
 .github-card__signal::after {
   position: absolute;
 
-  width: 38px;
-  height: 38px;
+  width: 18px;
+  height: 18px;
 
   background: hsla(var(--github-accent), 0.12);
   box-shadow: 0 0 35px hsla(var(--github-accent), 0.22);
@@ -1052,11 +1053,11 @@
 }
 
 .github-card__body {
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .github-card__body > p:first-child {
-  margin: 0 0 12px;
+  margin: 0 0 9px;
 
   font-size: 8px;
   letter-spacing: 0.18em;
@@ -1068,19 +1069,19 @@
   margin: 0;
 
   font-family: "Bodoni Moda", "Times New Roman", serif;
-  font-size: clamp(30px, 3vw, 47px);
+  font-size: clamp(28px, 2.35vw, 36px);
   font-weight: 400;
-  line-height: 0.94;
+  line-height: 0.98;
 
   letter-spacing: -0.045em;
 }
 
 .github-card__body > p:last-child {
-  min-height: 67px;
-  margin: 18px 0 0;
+  min-height: 0;
+  margin: 12px 0 0;
 
-  font-size: 9px;
-  line-height: 1.75;
+  font-size: 11px;
+  line-height: 1.65;
   letter-spacing: 0.035em;
 
   color: rgba(239, 234, 225, 0.51);
@@ -1091,14 +1092,14 @@
   flex-wrap: wrap;
   gap: 7px;
 
-  margin: 22px 0 0;
-  padding: 0;
+  margin: auto 0 0;
+  padding: 14px 0 0;
 
   list-style: none;
 }
 
 .github-card__stack li {
-  padding: 6px 8px;
+  padding: 5px 7px;
 
   border: 1px solid rgba(255, 255, 255, 0.11);
 
@@ -1389,10 +1390,10 @@
 
   .github-showcase__head {
     grid-template-columns:
-      minmax(220px, 0.65fr)
-      minmax(380px, 1.35fr);
+      minmax(180px, 0.65fr)
+      minmax(0, 1.35fr);
 
-    gap: 42px;
+    gap: 26px;
   }
 
   .github-showcase__grid {
@@ -1402,7 +1403,7 @@
   .github-card--jarvis {
     grid-column: 1 / -1;
 
-    min-height: 370px;
+    min-height: 280px;
   }
 
   .work__footer {
@@ -1510,7 +1511,7 @@
   .github-showcase__head {
     grid-template-columns: 1fr;
 
-    gap: 28px;
+    gap: 18px;
   }
 
   .github-showcase__intro .project__description {
@@ -1520,33 +1521,33 @@
   .github-showcase__grid {
     grid-template-columns: 1fr;
 
-    gap: 14px;
+    gap: 12px;
 
-    margin-top: 44px;
+    margin-top: 24px;
   }
 
   .github-card,
   .github-card--jarvis {
     grid-column: auto;
 
-    min-height: 385px;
-    padding: 22px;
+    min-height: 0;
+    padding: 20px;
   }
 
   .github-card__signal {
-    width: 98px;
-    height: 98px;
+    width: 44px;
+    height: 44px;
 
-    margin: 29px 0 25px;
+    margin: 12px 0 14px;
   }
 
   .github-card__signal::before {
-    width: 66px;
-    height: 66px;
+    width: 28px;
+    height: 28px;
   }
 
   .github-card__body h4 {
-    font-size: clamp(34px, 11vw, 48px);
+    font-size: clamp(28px, 8vw, 36px);
   }
 
   .github-card__body > p:last-child {
@@ -1740,8 +1741,8 @@
   }
 
   .github-card {
-    min-height: 370px;
-    padding: 20px;
+    min-height: 0;
+    padding: 18px;
   }
 
 }
